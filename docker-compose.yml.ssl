@@ -1,0 +1,12 @@
+version: '2'
+services:
+  frontend:
+    image: giuseppevavala/node_http_server
+    container_name: frontend
+    ports:
+      - 4443:8080
+      - 9081:8080
+    volumes:
+      - ./ssl:/ssl
+      - .:/var/www
+    command: http-server --ssl -p 8080 /var/www -C /ssl/server.crt -K /ssl/server.key
